@@ -7,15 +7,15 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'NTB',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'MemberShip',),
+      home: const MyHomePage(title: 'Membership'),
     );
   }
 }
@@ -41,25 +41,42 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black26,
+      backgroundColor: Colors.grey[900], // 검은색 계열 배경색
       appBar: AppBar(
-        backgroundColor: Colors.pink,
-        title: Text(widget.title,style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),),
+        backgroundColor: Colors.grey[800], // 어두운 회색 앱바 배경색
+        title: Text(
+          widget.title,
+          style: const TextStyle(
+              fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Text('Welcome to NTB', style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold, color: Colors.white)),
-            Text('금주의 출석 횟수: 10', style: TextStyle(fontSize: 20.0, color: Colors.white)),
+            Text(
+              'Welcome to NTB',
+              style: TextStyle(
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[300]), // 밝은 회색 텍스트
+            ),
+            Text(
+              '금주의 출석 횟수: 10',
+              style: TextStyle(fontSize: 18.0, color: Colors.white),
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        backgroundColor: Colors.grey[800], // 어두운 회색 플로팅 액션 버튼 배경색
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ), // 흰색 아이콘
+      ),
     );
   }
 }
