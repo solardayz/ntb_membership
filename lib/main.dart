@@ -53,7 +53,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('통합멤버십', style: TextStyle(color: Colors.white)),
+        title: Text('NTB 통합멤버십', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 50)),
         centerTitle: true,
         backgroundColor: Colors.black,
         elevation: 0,
@@ -122,7 +122,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                             ),
                           ),
                           SizedBox(height: 4),
-                          Text(monthLabels[index], style: TextStyle(fontSize: 10, color: Colors.white)),
+                          Text(monthLabels[index], style: TextStyle(fontSize: 15, color: Colors.white)),
                         ],
                       ),
                     );
@@ -131,7 +131,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
               ),
             ),
             SizedBox(height: 8),
-            Text("월별 출석률", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white)),
+            Text("월별 출석률", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white)),
             Spacer(),
             Container(
               width: double.infinity,
@@ -175,7 +175,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
           animationDuration: 1000,
         ),
         SizedBox(height: 4),
-        Text(label, style: TextStyle(fontSize: 12, color: Colors.white)),
+        Text(label, style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold)),
       ],
     );
   }
