@@ -58,102 +58,113 @@ class _MembershipScreenState extends State<MembershipScreen> {
         backgroundColor: Colors.black,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.black, Colors.grey[900]!],
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          child: Expanded(
+            child: Column(
               children: [
-                CircleAvatar(
-                  radius: 40,
-                  backgroundImage: NetworkImage('https://pimg.mk.co.kr/meet/neds/2014/10/image_readtop_2014_1274942_14123176891560616.jpg'),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircleAvatar(
+                      radius: 40,
+                      backgroundImage: NetworkImage('https://pimg.mk.co.kr/meet/neds/2014/10/image_readtop_2014_1274942_14123176891560616.jpg'),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      '신종훈',
+                      style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Text(
-                  '신종훈',
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () => _selectDate(context),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[900],
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      formattedDate,
+                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
+                    ),
+                  ),
                 ),
-              ],
-            ),
-            SizedBox(height: 20),
-            GestureDetector(
-              onTap: () => _selectDate(context),
-              child: Container(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.grey[900],
-                  borderRadius: BorderRadius.circular(8),
+                SizedBox(height: 12),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _buildStatCircle("전체", overallAttendance, Colors.white),
+                    _buildStatCircle("주간", weeklyAttendance, Colors.grey[700]!),
+                    _buildStatCircle("월별", monthlyAttendance, Colors.grey[500]!),
+                  ],
                 ),
-                child: Text(
-                  formattedDate,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: Colors.white),
-                ),
-              ),
-            ),
-            SizedBox(height: 12),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildStatCircle("전체", overallAttendance, Colors.white),
-                _buildStatCircle("주간", weeklyAttendance, Colors.grey[700]!),
-                _buildStatCircle("월별", monthlyAttendance, Colors.grey[500]!),
-              ],
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Container(
-                height: 200,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: List.generate(monthlyAttendanceData.length, (index) {
-                    double attendance = monthlyAttendanceData[index];
-                    return Expanded(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Container(
-                            height: attendance * 150,
-                            width: 10,
-                            decoration: BoxDecoration(
-                              color: Colors.grey[600],
-                              borderRadius: BorderRadius.circular(5),
-                            ),
+                SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Container(
+                    height: 200,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: List.generate(monthlyAttendanceData.length, (index) {
+                        double attendance = monthlyAttendanceData[index];
+                        return Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Container(
+                                height: attendance * 150,
+                                width: 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.grey[600],
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                              ),
+                              SizedBox(height: 4),
+                              Text(monthLabels[index], style: TextStyle(fontSize: 15, color: Colors.white)),
+                            ],
                           ),
-                          SizedBox(height: 4),
-                          Text(monthLabels[index], style: TextStyle(fontSize: 15, color: Colors.white)),
-                        ],
-                      ),
-                    );
-                  }),
+                        );
+                      }),
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(height: 8),
+                Text("월별 출석률", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white)),
+                Spacer(),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(12),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[700]),
+                    onPressed: () {},
+                    child: Text('출석체크', style: TextStyle(color: Colors.white)),
+                  ),
+                ),
+                Spacer(),
+                Container(
+                  width: double.infinity,
+                  padding: EdgeInsets.all(12),
+                  color: Colors.grey[900],
+                  child: Text(
+                    'NTB © 2025',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 12, color: Colors.grey[500]),
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: 8),
-            Text("월별 출석률", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white)),
-            Spacer(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(12),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.grey[700]),
-                onPressed: () {},
-                child: Text('출석체크', style: TextStyle(color: Colors.white)),
-              ),
-            ),
-            Spacer(),
-            Container(
-              width: double.infinity,
-              padding: EdgeInsets.all(12),
-              color: Colors.grey[900],
-              child: Text(
-                'NTB © 2025',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12, color: Colors.grey[500]),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );
