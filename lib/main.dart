@@ -62,7 +62,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('NTB'),
+        title: Text('통합멤버십'),
         centerTitle: true,
       ),
       body: Padding(
@@ -83,7 +83,7 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 Text(
                   '신종훈',
                   style: TextStyle(
-                    fontSize: 18, // 글씨 크기 축소
+                    fontSize: 25, // 글씨 크기 축소
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -226,6 +226,12 @@ class _MembershipScreenState extends State<MembershipScreen> {
                 fontWeight: FontWeight.w500,
                 color: Colors.grey[800],
               ),
+            ),
+            Spacer(),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(12),
+              child: ElevatedButton(onPressed: (){}, child: Text('출석체크')),
             ),
             Spacer(),
             // 푸터 영역
